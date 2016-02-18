@@ -1,7 +1,7 @@
-let votableController = require('./votableController');
+import votableController from './votableController';
 
-module.exports = (app =>{
+export default app =>{
   app.route('/')
     .post(votableController.newVotable)
     .get(votableController.dummy)
-});
+};
