@@ -1,12 +1,12 @@
 import { join } from 'path';
-import votableRouteConfig from '../votable/votableRoutes';
+import postRouteConfig from '../posts/postRoutes';
 
 export default (app, express) => {
-  let votableRouter = express.Router();
+  let postRouter = express.Router();
 
   app.use(express.static(join(__dirname, '../../client')));
 
-  app.use('/api/votables', votableRouter);
+  app.use('/api/posts', postRouter);
 
-  votableRouteConfig(votableRouter);
+  postRouteConfig(postRouter);
 };
