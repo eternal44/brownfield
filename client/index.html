@@ -1,11 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Title of the document</title>
-</head>
+  <head>
+    <title>Brown Field</title>
+  </head>
 
-<body>
-The content of the document......
-</body>
+  <body ng-app="brownfield">
+    <h1>Brown Field App</h1>
+    <script src="/scripts/angular/angular.min.js"></script>
+    <script src="/scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <div ui-view></div>
+
+    <!-- extract into separate files -->
+    <script>
+      var app = angular.module('brownfield', ['ui.router']);
+
+      app.factory('posts', function(){
+        var ghettoDB = {
+          posts: []
+        };
+        return ghettoDB;
+      });
+
+      app.controller('SignUpController', function($scope, $state){
+        $scope.signUpUser = function(){
+        };
+      });
+
+      app.controller('PostsController', function($scope, $stateParams, posts){
+        $scope.addPost = function(){
+        };
+
+        $scope.incrementVote = function(){
+        };
+
+        $scope.decrementVote = function(){
+        };
+
+        $scope.posts = posts.posts[$stateParams.id];
+      });
+
+      app.config(function($stateProvider, $urlRouterProvider){
+        $stateProvider
+        .state('signup', {
+          url: '/signup',
+          templateUrl: '/views/signup.html',
+          controller: 'SignUpController'
+        })
+        .state('posts', {
+          url: '/posts',
+          templateUrl: '/views/posts.html',
+          controller: 'PostsController'
+        });
+
+        $urlRouterProvider.otherwise('signup');
+      });
+
+    </script>
+  </body>
 
 </html>
