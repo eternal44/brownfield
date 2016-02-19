@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   newVotable: function(req, res, next){
     res.send('Make new votable item');
   },

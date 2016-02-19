@@ -1,10 +1,9 @@
 import express from 'express';
-import { join } from 'path';
+import middleware from './config/middleware';
 
 let app = express();
 
-require('./config/middleware.js')(app, express, join);
-require('./votable/votableRoutes.js')(app);
+middleware(app, express);
 
 const port = process.env.PORT || 4000;
 
