@@ -6,55 +6,18 @@
 
   <body ng-app="brownfield">
     <h1>Brown Field App</h1>
-    <script src="/scripts/angular/angular.min.js"></script>
+    <script src="/scripts/angular/angular.js"></script>
     <script src="/scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
     <div ui-view></div>
 
+    <!-- <script src='/js/app.js'></script> -->
+    <script src='app.js'></script>
+    <script src='services/postsGhettoDB.js'></script>
+    <script src='controllers/postsController.js'></script>
+    <script src='controllers/signUpController.js'></script>
+
     <!-- extract into separate files -->
     <script>
-      var app = angular.module('brownfield', ['ui.router']);
-
-      app.factory('posts', function(){
-        var ghettoDB = {
-          posts: []
-        };
-        return ghettoDB;
-      });
-
-      app.controller('SignUpController', function($scope, $state){
-        $scope.signUpUser = function(){
-        };
-      });
-
-      app.controller('PostsController', function($scope, $stateParams, posts){
-        $scope.addPost = function(){
-        };
-
-        $scope.incrementVote = function(){
-        };
-
-        $scope.decrementVote = function(){
-        };
-
-        $scope.posts = posts.posts[$stateParams.id];
-      });
-
-      app.config(function($stateProvider, $urlRouterProvider){
-        $stateProvider
-        .state('signup', {
-          url: '/signup',
-          templateUrl: '/views/signup.html',
-          controller: 'SignUpController'
-        })
-        .state('posts', {
-          url: '/posts',
-          templateUrl: '/views/posts.html',
-          controller: 'PostsController'
-        });
-
-        $urlRouterProvider.otherwise('signup');
-      });
-
     </script>
   </body>
 
