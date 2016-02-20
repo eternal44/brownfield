@@ -2,6 +2,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import { PostsController } from './controllers/postsController';
 import { SignUpController } from './controllers/signUpController';
+import { ghettoDB } from './services/postsGhettoDB'
 
 export default angular.module('brownfield', [
   uiRouter
@@ -9,6 +10,7 @@ export default angular.module('brownfield', [
 
 .controller('PostsController', PostsController)
 .controller('SignUpController', SignUpController)
+.service('ghettoDB', ghettoDB)
 
 .config(function($stateProvider, $urlRouterProvider) {
 

@@ -62,9 +62,11 @@
 
 	var _signUpController = __webpack_require__(5);
 
+	var _postsGhettoDB = __webpack_require__(6);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _angular2.default.module('brownfield', [_angularUiRouter2.default]).controller('PostsController', _postsController.PostsController).controller('SignUpController', _signUpController.SignUpController).config(function ($stateProvider, $urlRouterProvider) {
+	exports.default = _angular2.default.module('brownfield', [_angularUiRouter2.default]).controller('PostsController', _postsController.PostsController).controller('SignUpController', _signUpController.SignUpController).service('ghettoDB', _postsGhettoDB.ghettoDB).config(function ($stateProvider, $urlRouterProvider) {
 
 	  $urlRouterProvider.otherwise('signup');
 
@@ -35149,6 +35151,35 @@
 	}();
 
 	exports.SignUpController = SignUpController;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	// angular.module('brownfield.ghettoDB', [])
+	//   .factory('posts',() => {
+	//     let ghettoDB = {
+	//       posts: []
+	//     };
+	//     return ghettoDB;
+	//   });
+
+	var ghettoDB = function ghettoDB($http) {
+	  _classCallCheck(this, ghettoDB);
+
+	  this.$http = $http;
+	  this.posts = [];
+	};
+
+	exports.ghettoDB = ghettoDB;
 
 /***/ }
 /******/ ]);
