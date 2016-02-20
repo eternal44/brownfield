@@ -1,15 +1,33 @@
-angular.module('brownfield.postsController', [])
-  .controller('PostsController', ($scope, $stateParams, posts) => {
-    $scope.addPost = () => {
-    };
+// export default angular.module('brownfield.postsController', [])
+//   .controller('PostsController', ($scope, $stateParams, posts) => {
+//     $scope.addPost = () => {
+//     };
 
-    $scope.incrementVote = () => {
-    };
+//     $scope.incrementVote = () => {
+//     };
 
-    $scope.decrementVote =() => {
-    };
+//     $scope.decrementVote =() => {
+//     };
 
-    $scope.posts = posts.posts[$stateParams.id];
-  });
+//     $scope.posts = posts.posts[$stateParams.id];
+//   });
 
+class PostsController {
+  constructor() {
+    this.posts = [];
+  }
 
+  addPost() {
+
+  }
+
+  incrementVote() {
+
+  }
+
+  decrementVote() {
+
+  }
+}
+
+export { PostsController }
