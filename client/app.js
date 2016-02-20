@@ -1,4 +1,5 @@
 import angular from 'angular';
+import angularFire from 'angularfire';
 import uiRouter from 'angular-ui-router';
 import { PostsController } from './controllers/postsController';
 import { SignUpController } from './controllers/signUpController';
