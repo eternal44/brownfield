@@ -1,22 +1,30 @@
-angular.module('brownfield', [
-  'ui.router',
-  'brownfield.signUpController',
-  'brownfield.postsController'
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import { PostsController } from './controllers/postsController';
+import { SignUpController } from './controllers/signUpController';
+
+export default angular.module('brownfield', [
+  uiRouter
 ])
 
-.config(($stateProvider, $urlRouterProvider) => {
-  $stateProvider
-  .state('signup', {
-    url: '/signup',
-    templateUrl: '/views/signup.html',
-    controller: 'SignUpController'
-  })
-  .state('posts', {
-    url: '/posts',
-    templateUrl: '/views/posts.html',
-    controller: 'PostsController'
-  });
+.controller('PostsController', PostsController)
+.controller('SignUpController', SignUpController)
+
+.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('signup');
-});
+
+  $stateProvider
+    .state('signup', {
+      url: '/signup',
+      templateUrl: '/views/signup.html',
+      controller: 'SignUpController'
+    })
+    .state('posts', {
+      url: '/posts',
+      templateUrl: '/views/posts.html',
+      controller: 'PostsController'
+    });
+
+})
 
