@@ -21,7 +21,8 @@ export default angular.module('brownfield', [
     .state('login', {
       url: '/login',
       templateUrl: '/views/login.html',
-      controller: 'LoginController'
+      controller: 'LoginController',
+      controllerAs: 'login'
     })
     .state('posts', {
       url: '/posts',
