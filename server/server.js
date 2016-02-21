@@ -1,7 +1,10 @@
-var express = require('express');
-var middleware = require('./config/middleware.js');
+// var express = require('express');
+// var middleware = require('./config/middleware.js');
 
-var app = express();
+import express from 'express'
+import middleware from './config/middleware.js'
+
+let app = express();
 
 middleware(app, express);
 
