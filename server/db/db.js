@@ -1,18 +1,18 @@
-import { Client } from 'pg';
-require('dotenv').config();
+var pg = require('pg');
+require('../../env.js');
 
-const connectionString = `${process.env.DATABASE_URL}?ssl=true`;
+var connectionString = process.env.DATABASE_URL;
 
-const client = new Client(connectionString);
+// var client = new pg.Client(connectionString);
 
-// var client = new pg.Client({
-//   user: process.env.PG_USER,
-//   password: process.env.PG_PASSWORD,
-//   database: process.env.PG_DATABASE,
-//   port: process.env.PG_PORT,
-//   host: process.env.PG_HOST,
-//   ssl: true
-// });
+var client = new pg.Client({
+  user: process.env.PG_USER,
+  password: process.env.PG_PASSWORD,
+  database: process.env.PG_DATABASE,
+  port: process.env.PG_PORT,
+  host: process.env.PG_HOST,
+  ssl: true
+});
 client.connect();
 
 var createTables = '\
