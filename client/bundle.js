@@ -37439,7 +37439,7 @@
 	      ref.authWithOAuthPopup("facebook", function (error) {
 	        if (error) console.log("Login Failed!", error);
 	        console.log('successful login');
-	        $state.go('dummy');
+	        $state.go('posts');
 	      });
 	    }
 	  }]);
