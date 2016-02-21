@@ -1,3 +1,10 @@
+require('angular');
+require('angular-ui-router');
+require('firebase');
+require('angularfire');
+require('./controllers/loginController');
+require('./controllers/postsController');
+
 angular.module('truu', [
   'ui.router',
   'truu.loginController',

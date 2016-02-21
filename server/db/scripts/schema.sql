@@ -23,4 +23,4 @@ CREATE TABLE VOTES (
 
   FOREIGN KEY (voterID) REFERENCES Users(id),
   FOREIGN KEY (postID) REFERENCES Posts(id)
-)
+);

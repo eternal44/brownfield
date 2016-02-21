@@ -1,4 +1,4 @@
-angular.module('truu.postsController', [])
+module.exports = angular.module('truu.postsController', [])
   .controller('PostsController', function($scope, $stateParams){
     $scope.addPost = function(){
     };
