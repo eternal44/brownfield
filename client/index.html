@@ -2,20 +2,14 @@
 <html>
   <head>
     <title>Brown Field</title>
+    <link rel="stylesheet" href="build/style.css">
   </head>
 
   <body ng-app="truu">
     <h1>Brown Field App</h1>
     <div ui-view></div>
 
-    <script src="/scripts/angular/angular.min.js"></script>
-    <script src="/scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-
-    <script src='app.js'></script>
-    <script src='services/postsGhettoDB.js'></script>
-    <script src='controllers/postsController.js'></script>
-    <script src='controllers/loginController.js'></script>
+    <script src='build/bundle.js'></script>
   </body>
 
 </html>

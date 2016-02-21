@@ -1,4 +1,4 @@
-angular.module('truu.ghettoDB', [])
+module.exports = angular.module('truu.ghettoDB', [])
   .factory('posts',() => {
     let ghettoDB = {
       posts: []
