@@ -1,26 +1,18 @@
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import { PostsController } from './controllers/postsController';
-import { SignUpController } from './controllers/signUpController';
-import { ghettoDB } from './services/postsGhettoDB'
-
-export default angular.module('brownfield', [
-  uiRouter
+angular.module('truu', [
+  'ui.router',
+  'truu.loginController',
+  'truu.postsController'
 ])
-
-.controller('PostsController', PostsController)
-.controller('SignUpController', SignUpController)
-.service('ghettoDB', ghettoDB)
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('signup');
+  $urlRouterProvider.otherwise('login');
 
   $stateProvider
-    .state('signup', {
-      url: '/signup',
-      templateUrl: '/views/signup.html',
-      controller: 'SignUpController'
+    .state('login', {
+      url: '/login',
+      templateUrl: '/views/login.html',
+      controller: 'LoginController',
     })
     .state('posts', {
       url: '/posts',
