@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/gettruetheday/brownfield.svg?branch=master)](https://travis-ci.org/gettruetheday/brownfield)
 # brownfield
 
 This is a project..
