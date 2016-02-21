@@ -1,7 +1,10 @@
-var path = require('path');
-var postRouteConfig = require('../posts/postRoutes');
+// var path = require('path');
+// var postRouteConfig = require('../posts/postRoutes');
 
-module.exports = function(app, express){
+import path from 'path'
+import postRouteConfig from '../posts/postRoutes'
+
+export default function(app, express){
   var postRouter = express.Router();
 
   app.use(express.static(path.join(__dirname, '/../../client')));
@@ -9,5 +12,5 @@ module.exports = function(app, express){
 
   app.use('/api/posts', postRouter);
 
-  // postRouteConfig(postRouter);
+  postRouteConfig(postRouter);
 };
