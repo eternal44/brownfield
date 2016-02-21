@@ -2,30 +2,29 @@ CREATE DATABASE truu;
 
 USE truu;
 
-CREATE TABLE users (
-  id int NOT NULL AUTO_INCREMENT,
-  text varchar(200) NOT NULL,
-  name varchar(20),
-  PRIMARY KEY (ID)
-);
+CREATE TABLE Users (
+  id INTEGER PRIMARY KEY ASC,
+  email VARCHAR(100) UNIQUE,
+  name VARCHAR(100)
+)
 
-CREATE TABLE posts (
-  id int NOT NULL AUTO_INCREMENT,
-  item_name varchar(40) NOT NULL,
-  item_type varchar(40) NOT NULL,
-  /* how do we connect a photo on s3 to a specific item */
-  PRIMARY KEY (ID)
-);
+CREATE TABLE Posts (
+  id INTEGER PRIMARY KEY ASC,
+  userID INTEGER,
+  photo VARCHAR(200),
+  item_name VARCHAR(100),
+  item_type VARCHAR(200),
+  comment VARCHAR(500),
 
-CREATE TABLE votes (
-  id int NOT NULL AUTO_INCREMENT,
-  userid int NOT NULL,
-  postid int NOT NULL,
-  PRIMARY KEY (ID)
-);
+  FOREIGN KEY (userID) REFERENCES Users(id)
+)
 
+CREATE TABLE VOTES (
+  id INTEGER PRIMARY KEY ASC,
+  voterID INTEGER,
+  postID INTEGER,
+  vote BOOLEAN,
 
-
-/*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
- *  to create the database and the tables.*/
+  FOREIGN KEY (voterID) REFERENCES Users(id),
+  FOREIGN KEY (postID) REFERENCES Posts(id)
+)
