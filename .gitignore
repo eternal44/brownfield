@@ -32,10 +32,11 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# store local env variables
-env.js
 node_modules
 
 notes.md
 
+# store local env variables
 .env
+
+client/build
