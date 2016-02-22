@@ -13,4 +13,4 @@ export default function(app, express){
   app.use('/api/posts', postRouter);
 
   postRouteConfig(postRouter);
-};
+}

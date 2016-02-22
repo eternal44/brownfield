@@ -9,8 +9,8 @@ var sass = require('gulp-sass');
 var livereload = require('gulp-livereload');
 
 var paths = {
-  // scripts: ['client/*.js', 'client/**/*.js'],
-  html: ['client/views/*.html', 'client/index.html'],
+  scripts: ['client/app/*.js', 'client/app/**/*.js'],
+  html: ['client/app/views/*.html', 'client/index.html'],
   styles: ['client/styles/scss/*.scss'],
   test: ['tests/**/*.js']
 };
@@ -40,7 +40,7 @@ gulp.task('e2e', function() {
 });
 
 gulp.task('browserify', function() {
-  return browserify('./client/app.js')
+  return browserify('./client/app/app.js')
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./client/build/'))
@@ -54,13 +54,13 @@ gulp.task('browserify', function() {
 //     .pipe(livereload());
 // });
 
-gulp.task('views', function() {
-  gulp.src('client/index.html')
-  .pipe(gulp.dest('./client/build/'));
+// gulp.task('views', function() {
+//   gulp.src('client/index.html')
+//   .pipe(gulp.dest('./client/build/'));
 
-  gulp.src('./client/views/**/*')
-  .pipe(gulp.dest('./client/views/'));
-});
+//   gulp.src('./client/views/**/*')
+//   .pipe(gulp.dest('./client/views/'));
+// });
 
 gulp.task('eslint', function() {
   return gulp.src(['**/*.js', '!tests/*.js', '!node_modules/**/*.js'])

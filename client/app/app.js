@@ -20,12 +20,12 @@ angular.module('truu', [
   $stateProvider
     .state('login', {
       url: '/login',
-      templateUrl: '/views/login.html',
+      templateUrl: 'app/views/login.html',
       controller: 'LoginController',
     })
     .state('posts', {
       url: '/posts',
-      templateUrl: '/views/posts.html',
+      templateUrl: 'app/views/posts.html',
       controller: 'PostsController'
     });
 
