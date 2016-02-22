@@ -6,12 +6,12 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
 var sass = require('gulp-sass');
+var livereload = require('gulp-livereload');
 
 var paths = {
-  // all our client app js files, not including 3rd party js files
-  scripts: ['client/**/*.js'],
-  html: ['client/views/**/*.html', 'client/index.html'],
-  styles: ['client/styles/scss/**/*.scss'],
+  scripts: ['client/*.js', 'client/**/*.js'],
+  html: ['client/views/*.html', 'client/index.html'],
+  styles: ['client/styles/scss/*.scss'],
   test: ['tests/**/*.js']
 };
 
@@ -44,12 +44,22 @@ gulp.task('browserify', function() {
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./client/build/'))
+    .pipe(livereload());
 });
 
 gulp.task('build-css', function() {
   return gulp.src(paths.styles)
     .pipe(sass())
-    .pipe(gulp.dest('./client/build/'));
+    .pipe(gulp.dest('./client/build/'))
+    .pipe(livereload());
+});
+
+gulp.task('views', function() {
+  gulp.src('client/index.html')
+  .pipe(gulp.dest('./client/build/'));
+
+  gulp.src('./client/views/**/*')
+  .pipe(gulp.dest('./client/views/'));
 });
 
 gulp.task('eslint', function() {
@@ -61,4 +71,12 @@ gulp.task('eslint', function() {
   .pipe(eslint.failAfterError());
 });
 
-gulp.task('default', ['connect']);
+gulp.task('watch', function() {
+  livereload.listen();
+
+  gulp.watch(paths.scripts, ['browserify']);
+  gulp.watch(paths.html, ['browserify']);
+  gulp.watch(paths.styles, ['build-css']);
+})
+
+gulp.task('default', ['browserify', 'build-css', 'watch']);
