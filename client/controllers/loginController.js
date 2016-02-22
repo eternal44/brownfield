@@ -5,7 +5,7 @@ module.exports = angular.module('truu.loginController', [])
       const ref = new Firebase('https://brown-field.firebaseio.com');
       ref.authWithOAuthPopup('facebook', function(error) {
         if (error) console.log('Login Failed!', error);
-        console.log('successful login');
+        // console.log('successful login');
         $state.go('posts');
       });
     }
