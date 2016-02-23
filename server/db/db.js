@@ -1,9 +1,11 @@
-import { Client } from 'pg';
+const pg = require('pg-rxjs');
 require('dotenv').config();
 
 const connectionString = `${process.env.DATABASE_URL}?ssl=true`;
 
-const client = new Client(connectionString);
+const client = new pg.Pool(connectionString);
+
+export default client;
 
 // var client = new pg.Client({
 //   user: process.env.PG_USER,
@@ -13,7 +15,7 @@ const client = new Client(connectionString);
 //   host: process.env.PG_HOST,
 //   ssl: true
 // });
-client.connect();
+// client.connect();
 
 // var createTables = '\
 // CREATE TABLE "users" (\
