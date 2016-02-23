@@ -2,20 +2,20 @@ module.exports = function(config) {
   config.set({
     basePath: '.',
 
-    frameworks: ['mocha', 'chai', 'browserify'],
+    frameworks: ['mocha', 'chai'],
 
     files: [
       './unit/*.js',
     ],
 
-    preprocessors: {
-      './unit/*.js': ['browserify']
-    },
+    // preprocessors: {
+    //   './unit/*.js': ['browserify']
+    // },
 
-    browserify: {
-      debug: true,
-      transform: [ 'babelify' ]
-    },
+    // browserify: {
+    //   debug: true,
+    //   transform: [ 'babelify' ]
+    // },
 
     reporters: ['mocha'],
 
@@ -36,9 +36,9 @@ module.exports = function(config) {
       'karma-mocha',
       'karma-chai',
       'karma-phantomjs-launcher',
-      'karma-mocha-reporter',
-      'babelify',
-      'karma-browserify'
+      'karma-mocha-reporter'
+      // 'babelify',
+      // 'karma-browserify'
     ]
   });
 };
