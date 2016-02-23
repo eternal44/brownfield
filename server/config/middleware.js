@@ -1,16 +1,27 @@
-// var path = require('path');
-// var postRouteConfig = require('../posts/postRoutes');
+import path from 'path';
+import compression from 'compression';
+// import routers
+import postRouterConfig from '../routes/postRoutes';
+import userRouterConfig from '../routes/userRoutes';
+import voteRouterConfig from '../routes/voteRoutes';
 
-import path from 'path'
-import postRouteConfig from '../posts/postRoutes'
+export default (app, express) => {
+  let postRouter = express.Router();
+  let userRouter = express.Router();
+  let voteRouter = express.Router();
 
-export default function(app, express){
-  var postRouter = express.Router();
-
+  // gzip compression middleware that decreases the size of the response body: increases speed
+  app.use(compression());
+  // sending static files
   app.use(express.static(path.join(__dirname, '/../../client')));
+  // sending the angular-material folder for the style sheet
   app.use('/stylesheet', express.static(path.join(__dirname, '/../../node_modules/angular-material/')));
 
   app.use('/api/posts', postRouter);
+  app.use('/api/user', userRouter);
+  app.use('/api/vote', voteRouter);
 
-  postRouteConfig(postRouter);
+  postRouterConfig(postRouter);
+  userRouterConfig(userRouter);
+  voteRouterConfig(voteRouter);
 }

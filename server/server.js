@@ -1,15 +1,9 @@
-// var express = require('express');
-// var middleware = require('./config/middleware.js');
+import server from './config/server-config';
 
-import express from 'express'
-import middleware from './config/middleware.js'
+require('dotenv').config();
 
-let app = express();
+const port = process.env.PORT;
 
-middleware(app, express);
-
-const port = process.env.PORT || 4000;
-
-app.listen(port, () => {
-  console.log('listening on port ', port);
+server.listen(port, () => {
+  console.log(`listening on port ${process.env.PORT}`);
 });
