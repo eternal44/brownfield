@@ -5,7 +5,7 @@ var protractor = require('gulp-protractor').protractor;
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
-var sass = require('gulp-sass');
+// var sass = require('gulp-sass');
 var livereload = require('gulp-livereload');
 
 var paths = {
