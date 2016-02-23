@@ -2,7 +2,7 @@ module.exports = function(config) {
   config.set({
     basePath: '.',
 
-    frameworks: ['mocha', 'chai', 'browserify'],
+    frameworks: ['mocha', 'chai'],
 
     files: [
       './unit/*.js',
