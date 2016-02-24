@@ -1,6 +1,8 @@
-module.exports = function($scope, $stateParams){
-  $scope.addPost = function(){
-  };
+module.exports = angular.module('truu.postsController', [])
+  .controller('PostsController', function($scope, $stateParams){
+    $scope.addPost = function(){
+
+    };
 
   $scope.incrementVote = function(){
   };
