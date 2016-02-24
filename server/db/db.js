@@ -1,5 +1,5 @@
 const pg = require('pg-rxjs');
-// require('dotenv').config();
+require('dotenv').config();
 
 const connectionString = `${process.env.DATABASE_URL}?ssl=true`;
 
