@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="truu">
   <head>
     <title>Brown Field</title>
     <link rel="stylesheet" href="stylesheet/angular-material.css">
   </head>
 
-  <body ng-app="truu">
-    <h1>Brown Field App</h1>
+  <body layout="column">
+    <md-toolbar layout="row">
+      <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+        <span class="visually-hidden">Menu</span>
+      </button>
+      <h1 class="md-toolbar-tools" layout-align-gt-sm="center">truu</h1>
+    </md-toolbar>
+
     <div ui-view></div>
 
     <script src='build/bundle.js'></script>

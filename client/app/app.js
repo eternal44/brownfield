@@ -5,6 +5,9 @@ require('angularfire');
 require('angular-material');
 var loginController = require('./controllers/loginController');
 var postsController = require('./controllers/postsController');
+var landingController = require('./controllers/landingController');
+var ngMaterialConfig = require('./config/ngMaterialConfig');
+var routesConfig = require('./config/routes');
 
 angular.module('truu', [
   'ui.router',
@@ -12,22 +15,9 @@ angular.module('truu', [
 ])
 .controller('LoginController', loginController)
 .controller('PostsController', postsController)
+.controller('LandingController', landingController)
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(ngMaterialConfig)
 
-  $urlRouterProvider.otherwise('login');
-
-  $stateProvider
-    .state('login', {
-      url: '/login',
-      templateUrl: 'app/views/login.html',
-      controller: 'LoginController',
-    })
-    .state('posts', {
-      url: '/posts',
-      templateUrl: 'app/views/posts.html',
-      controller: 'PostsController'
-    });
-
-});
+.config(routesConfig);
 
