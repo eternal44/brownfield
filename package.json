@@ -53,7 +53,6 @@
     "babel-loader": "^6.2.3",
     "babelify": "^7.2.0",
     "chai": "^3.5.0",
-    "dotenv": "^2.0.0",
     "eslint": "^2.1.0",
     "karma": "^0.13.21",
     "karma-browserify": "^5.0.2",
