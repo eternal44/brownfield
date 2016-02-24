@@ -3,15 +3,15 @@ require('angular-ui-router');
 require('firebase');
 require('angularfire');
 require('angular-material');
-require('./controllers/loginController');
-require('./controllers/postsController');
+var loginController = require('./controllers/loginController');
+var postsController = require('./controllers/postsController');
 
 angular.module('truu', [
   'ui.router',
-  'truu.loginController',
-  'truu.postsController',
   'ngMaterial'
 ])
+.controller('LoginController', loginController)
+.controller('PostsController', postsController)
 
 .config(function($stateProvider, $urlRouterProvider) {
 
