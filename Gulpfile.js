@@ -3,6 +3,8 @@ var connect = require('gulp-connect');
 var karma = require('karma').server;
 var protractor = require('gulp-protractor').protractor;
 var browserify = require('browserify');
+var errorify = require('errorify');
+
 var source = require('vinyl-source-stream');
 var eslint = require('gulp-eslint');
 // var sass = require('gulp-sass');
@@ -41,6 +43,7 @@ gulp.task('e2e', function() {
 
 gulp.task('browserify', function() {
   return browserify('./client/app/app.js')
+    .plugin(errorify)
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./client/build/'))

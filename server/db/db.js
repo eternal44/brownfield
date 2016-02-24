@@ -1,9 +1,9 @@
-const pg = require('pg-rxjs');
+const pg = require('pg');
 require('dotenv').config();
 
 const connectionString = `${process.env.DATABASE_URL}?ssl=true`;
 
-const client = new pg.Pool(connectionString);
+const client = new pg.Client(connectionString);
 
 export default client;
 
