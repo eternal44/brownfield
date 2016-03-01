@@ -13,9 +13,8 @@ export default (app, express) => {
   // gzip compression middleware that decreases the size of the response body: increases speed
   app.use(compression());
   // sending static files
-  app.use(express.static(path.join(__dirname, '/../../client')));
-  // sending the angular-material folder for the style sheet
-  app.use('/stylesheet', express.static(path.join(__dirname, '/../../node_modules/angular-material/')));
+  app.use(express.static(path.join(__dirname, '/../../dist')));
+  app.use('/style', express.static(path.join(__dirname, '/../../style')));
 
   app.use('/api/posts', postRouter);
   app.use('/api/user', userRouter);
