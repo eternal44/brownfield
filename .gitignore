@@ -39,4 +39,4 @@ notes.md
 # store local env variables
 .env
 
-client/build
+dist/bundle.js
