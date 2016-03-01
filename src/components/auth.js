@@ -6,7 +6,7 @@ export default class Auth extends Component {
   render() {
     return (
       <div>
-        <button
+        <button className="btn btn-primary"
         onClick={this.onButtonClick}>Login With Facebook
         </button>
       </div>
