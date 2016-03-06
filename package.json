@@ -8,7 +8,7 @@
     "build": "node_modules/.bin/webpack",
     "dev": "node_modules/.bin/webpack-dev-server --hot",
     "start:server": "nodemon server/server.js --exec babel-node --presets es2015",
-    "postinstall": "webpack"
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
