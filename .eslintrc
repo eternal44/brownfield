@@ -9,8 +9,8 @@
         2
       ],
     "quotes": [
-      2,
-      "single"
+      // 2,
+      // "single"
     ],
     "strict": 0,
     "comma-dangle": 0
