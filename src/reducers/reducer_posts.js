@@ -1,8 +1,8 @@
 export default function() {
   return [
-    {picture: '', title: 'necklace', user: ''},
-    {picture: '', title: 'qwe', user: ''},
-    {picture: '', title: 'gggg', user: ''},
-    {picture: '', title: 'poop', user: ''}
+    {picture: '', title: 'necklace', user: 'poop'},
+    {picture: '', title: 'qwe', user: 'poop'},
+    {picture: '', title: 'gggg', user: 'poop'},
+    {picture: '', title: 'poop', user: 'poop'}
   ];
 }
