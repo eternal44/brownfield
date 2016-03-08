@@ -6,3 +6,7 @@ export default function() {
     {picture: '', title: 'poop', user: 'poop'}
   ];
 }
+
+// export default function (state = null, action) {
+//   return state;
+// }
