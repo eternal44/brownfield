@@ -10,7 +10,7 @@ export default {
   },
   // db query to update a user
   updateUser: () => {
-
+    
   },
   // db query to get user information
   getUserInfo: () => {
@@ -19,5 +19,11 @@ export default {
   // db query to delete a user
   deleteUser: () => {
 
+  },
+  getAllUsers: () => {
+    let query = 'select * from users;';
+    db.query(query)
+      .map()
+      .subscribe();
   }
 }
