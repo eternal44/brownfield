@@ -3,7 +3,7 @@ import db from '../db';
 export default {
   // db query for a user to create a post
   createPost: () => {
-
+  
   },
   // db query for a user to update their post
   updatePost: () => {
