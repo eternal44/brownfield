@@ -4,6 +4,7 @@ import compression from 'compression';
 import postRouterConfig from '../routes/postRoutes';
 import userRouterConfig from '../routes/userRoutes';
 import voteRouterConfig from '../routes/voteRoutes';
+import { errorHandler, logError } from './utils';
 
 export default (app, express) => {
   let postRouter = express.Router();
@@ -12,6 +13,10 @@ export default (app, express) => {
 
   // gzip compression middleware that decreases the size of the response body: increases speed
   app.use(compression());
+  // error handling function from the utils
+  app.use(errorHandler);
+  //error logging function from the utils
+  app.use(logError);
   // sending static files
   app.use(express.static(path.join(__dirname, '/../../dist')));
   app.use('/style', express.static(path.join(__dirname, '/../../style')));

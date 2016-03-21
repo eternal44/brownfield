@@ -13,8 +13,12 @@ export default {
     
   },
   // db query to get user information
-  getUserInfo: () => {
-
+  getUserInfo: (userId) => {
+    let queryString = `select * from users on user.id=${userId}`;
+    
+    db.query(queryString)
+      .map()
+      .subscribe();
   },
   // db query to delete a user
   deleteUser: () => {
