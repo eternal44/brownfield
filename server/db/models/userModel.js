@@ -1,5 +1,6 @@
 import db from '../db';
 import Promise from 'bluebird';
+import { createUpdateString } from '../../config/utils';
 
 export default {
   // db query to create a user
@@ -20,8 +21,20 @@ export default {
   },
   
   // db query to update a user need to go throught req.body and get all the parameters we need to update
-  updateUser: (updateObj) => {
-     
+  updateUser: (userId, updateObj) => {
+    return new Promise((resolve, reject) => {
+      let updateString = createUpdateString(updateObj);
+      
+      let queryString = `update users set ${updateString} where id=${userId}`;
+      
+      db.query(queryString)
+        .subscribe(updatedUser => {
+        resolve(updatedUser);
+        },
+        err => {
+          console.error(err);
+        });
+    });
   },
   
   // db query to get user information

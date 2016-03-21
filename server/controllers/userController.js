@@ -41,9 +41,14 @@ export default {
   
   userPut: (req, res, next) => {
     // using lodash to see if the update object is empty
-    if (!isEmpty(req.body)) {
-      User.updateUser(req.body)
-        .then()
+    if (!isEmpty(req.body) && req.params.userId) {
+      User.updateUser(req.params.userId, req.body)
+        .then(updatedUser => {
+          res.json(updatedUser);
+        })
+        .catch(err => {
+          console.error(err);
+        })
     } else {
       next(new Error('Please send update parameters'));
     }
