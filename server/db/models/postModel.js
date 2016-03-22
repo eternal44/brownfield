@@ -92,7 +92,23 @@ export default {
   // db query to get back all posts for your dashboard
   getDashboardPosts: () => {
     return new Promise((resolve, reject) => {
+      // for mvp just getting all posts in the database
+      let queryString = `select * from posts;`;
       
+      db.query(queryString)
+        .map(dashPosts => {
+          if (userPosts.rowCount) {
+            return userPosts.rows;
+          } else {
+            reject(new Error('could not fetch posts for the dashboard'));
+          }
+        })
+        .subscribe(dashPosts => {
+          resolve(dashPosts);
+        },
+        err => {
+          reject(err);
+        });
     });
   }
 }
