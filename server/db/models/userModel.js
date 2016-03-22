@@ -32,10 +32,15 @@ export default {
       
       db.query(queryString)
         .map(updatedUser => {
-          return updatedUser.rows[0];
+          console.log(updatedUser, 'updated user');
+          if (updatedUser.rowCount) {
+            return updatedUser.rows[0]; 
+          } else {
+            reject(new Error('user does not exist or could not be updated'));
+          }
         })
         .subscribe(updatedUser => {
-        resolve(updatedUser);
+          resolve(updatedUser);
         },
         err => {
           reject(err);
@@ -64,11 +69,15 @@ export default {
   // db query to delete a user
   deleteUser: (userId) => {
     return new Promise((resolve, reject) => {
-      let queryString = `delete from users where id=${userId} returning *;`
+      let queryString = `delete from users where id=${userId} returning *;`;
       
       db.query(queryString)
         .map(deletedUser => {
-          return deletedUser.rows[0];
+          if (deletedUser.rowCount) {
+            return deletedUser.rows[0]; 
+          } else {
+            reject(new Error('the user doesnt exist or could not be deleted'));
+          }
         })
         .subscribe(deletedUser => {
           resolve(deletedUser);
