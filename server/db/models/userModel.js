@@ -8,14 +8,17 @@ export default {
   // current schema only has email and name
   createUser: (email, name) => {
     return new Promise((resolve, reject) => {
-      let queryString = `insert into users (email, name) values ('${email}', '${name}');`;
+      let queryString = `insert into users (email, name) values ('${email}', '${name}') returning *;`;
       
       db.query(queryString)
+        .map(createdUser => {
+          return createdUser.rows[0];
+        })
         .subscribe(createdUser => {
           resolve(createdUser);
         },
         err => {
-          console.error(err);
+          reject(err);
         });
     });
   },
@@ -25,14 +28,22 @@ export default {
     return new Promise((resolve, reject) => {
       let updateString = createUpdateString(updateObj);
       
-      let queryString = `update users set ${updateString} where id=${userId}`;
+      let queryString = `update users set ${updateString} where id=${userId} returning *;`;
       
       db.query(queryString)
+        .map(updatedUser => {
+          console.log(updatedUser, 'updated user');
+          if (updatedUser.rowCount) {
+            return updatedUser.rows[0]; 
+          } else {
+            reject(new Error('user does not exist or could not be updated'));
+          }
+        })
         .subscribe(updatedUser => {
-        resolve(updatedUser);
+          resolve(updatedUser);
         },
         err => {
-          console.error(err);
+          reject(err);
         });
     });
   },
@@ -50,7 +61,7 @@ export default {
           resolve(data);
         },
         err => {
-          console.error(err);
+          reject(err);
         });
     })
   },
@@ -58,14 +69,21 @@ export default {
   // db query to delete a user
   deleteUser: (userId) => {
     return new Promise((resolve, reject) => {
-      let queryString = `delete from users where id=${userId};`
+      let queryString = `delete from users where id=${userId} returning *;`;
       
       db.query(queryString)
+        .map(deletedUser => {
+          if (deletedUser.rowCount) {
+            return deletedUser.rows[0]; 
+          } else {
+            reject(new Error('the user doesnt exist or could not be deleted'));
+          }
+        })
         .subscribe(deletedUser => {
           resolve(deletedUser);
         },
         err => {
-          console.error(err);
+          reject(err);
         });
     });
   },
@@ -82,7 +100,7 @@ export default {
           resolve(allUserData);
         },
         err => {
-          console.error(err);
+          reject(err);
         });
     });
   }
