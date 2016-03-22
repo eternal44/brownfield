@@ -2,6 +2,7 @@ import Post from '../db/models/postModel';
 import { isEmpty } from 'lodash';
 
 export default {
+  // function that gets back all posts to populate dashboard
   dashboardPostsGet: (req, res, next) => {
     Post.getDashboardPosts()
       .then(dashPosts => {
@@ -12,6 +13,7 @@ export default {
       });
   },
   
+  // gets back all posts by 1 specific user
   userPostsGet: (req, res, next) => {
     if (req.params.userId) {
       Post.getUserPosts(req.params.userId)
@@ -26,6 +28,7 @@ export default {
     }
   },
   
+  // creates post
   postPost: (req, res, next) => {
     if (!isEmpty(req.body)) {
       Post.createPost(req.body.userId, req.body.photo, req.body.itemName, req.body.itemType, req.body.comment)
@@ -40,6 +43,7 @@ export default {
     }
   },
   
+  // updates one specific post
   postUpdate: (req, res, next) => {
     if (!isEmpty(req.body) && req.params.postId) {
       Post.updatePost(req.params.postId, req.body)
@@ -54,6 +58,7 @@ export default {
     }
   },
  
+ // deletes one specific post
   postDelete: (req, res, next) => {
     if (req.params.postId) {
       Post.deletePost(req.params.postId)
