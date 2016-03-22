@@ -69,7 +69,7 @@ export default {
   // db query to delete a user
   deleteUser: (userId) => {
     return new Promise((resolve, reject) => {
-      let queryString = `delete from users where id=${userId} returning *;`
+      let queryString = `delete from users where id=${userId} returning *;`;
       
       db.query(queryString)
         .map(deletedUser => {
