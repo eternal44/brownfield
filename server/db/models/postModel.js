@@ -6,7 +6,7 @@ export default {
   // db query for a user to create a post
   createPost: (userId, photo, itemName, itemType, comment) => {
     return new Promise((resolve, reject) => {
-      let queryString = `insert into posts (userId, photo, item_name, item_type, comment) values (${userId}, ${photo}, ${itemName}, ${itemType}, ${comment}) returning *`;
+      let queryString = `insert into posts (userId, photo, item_name, item_type, comment) values (${userId}, '${photo}', '${itemName}', '${itemType}', '${comment}') returning *;`;
       
       db.query(queryString)
         .map(createdPost => {
@@ -97,8 +97,8 @@ export default {
       
       db.query(queryString)
         .map(dashPosts => {
-          if (userPosts.rowCount) {
-            return userPosts.rows;
+          if (dashPosts.rowCount) {
+            return dashPosts.rows;
           } else {
             reject(new Error('could not fetch posts for the dashboard'));
           }
