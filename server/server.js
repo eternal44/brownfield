@@ -3,5 +3,5 @@ import server from './config/server-config';
 const port = process.env.PORT || 4000;
 
 server.listen(port, () => {
-  console.log(`listening on port ${port}`);
+  console.log(`listening on port ${port}`)
 });
