@@ -1,7 +1,14 @@
+DROP TABLE Users CASCADE;
+
+DROP TABLE Posts CASCADE;
+
+DROP TABLE Votes CASCADE;
+
 CREATE TABLE Users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(100) UNIQUE,
-  name VARCHAR(100)
+  name VARCHAR(100),
+  facebookID VARCHAR(100)
 );
 
 CREATE TABLE Posts (
@@ -19,7 +26,7 @@ CREATE TABLE Votes (
   id SERIAL PRIMARY KEY,
   voterID INTEGER,
   postID INTEGER,
-  vote BOOLEAN,
+  vote INTEGER,
 
   FOREIGN KEY (voterID) REFERENCES Users(id),
   FOREIGN KEY (postID) REFERENCES Posts(id)
