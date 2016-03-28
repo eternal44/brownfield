@@ -44,9 +44,9 @@ export default {
   },
   
   // updates one specific post
-  postUpdate: (req, res, next) => {
-    if (!isEmpty(req.body) && req.params.postId) {
-      Post.updatePost(req.params.postId, req.body)
+  postUpdate: ({body, params: { postId }}, res, next) => {
+    if (!isEmpty(body) && postId) {
+      Post.updatePost(postId, body)
         .then(updatedPost => {
           res.json(updatedPost);
         })
@@ -59,9 +59,9 @@ export default {
   },
  
  // deletes one specific post
-  postDelete: (req, res, next) => {
-    if (req.params.postId) {
-      Post.deletePost(req.params.postId)
+  postDelete: ({params: { postId }}, res, next) => {
+    if (postId) {
+      Post.deletePost(postId)
         .then(deletedPost => {
           res.json(deletedPost);
         })
