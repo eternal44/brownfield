@@ -5,9 +5,9 @@ export default {
   /* db query for user to vote for a post => left/right swipe 
   possible refactor lator to voteType being a number
   */
-  userVoteForPost: (userId, postId, voteType) => {
+  userVoteForPost: (userId, postId, voteWeight) => {
     return new Promise((resolve, reject) => {
-      let queryString = `insert into votes (voterID, postID, vote) values (${userId}, ${postId}, ${voteType}) returning *;`;
+      let queryString = `insert into votes (voterID, postID, vote) values (${userId}, ${postId}, ${voteWeight}) returning *;`;
       
       db.query(queryString)
         .map(vote => {
@@ -22,9 +22,9 @@ export default {
     });
   },
   // db query to update vote for post if you made a mistake voting. reverses the boolean value
-  updateVoteForPost: (userId, postId, voteType) => {
+  updateVoteForPost: (userId, postId, voteWeight) => {
     return new Promise((resolve, reject) => {
-      let queryString = `update votes set vote=${voteType} where userID=${userId} and postID=${postId} returning *;`;
+      let queryString = `update votes set vote=${voteWeight} where userID=${userId} and postID=${postId} returning *;`;
     });
   },
   /* Unvote function? deletes the previous vote on the post
