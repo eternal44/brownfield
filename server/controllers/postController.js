@@ -14,9 +14,9 @@ export default {
   },
   
   // gets back all posts by 1 specific user
-  userPostsGet: (req, res, next) => {
-    if (req.params.userId) {
-      Post.getUserPosts(req.params.userId)
+  userPostsGet: ({params: { userId }}, res, next) => {
+    if (userId) {
+      Post.getUserPosts(userId)
         .then(userPosts => {
           res.json(userPosts);
         })
@@ -29,9 +29,9 @@ export default {
   },
   
   // creates post
-  postPost: (req, res, next) => {
-    if (!isEmpty(req.body)) {
-      Post.createPost(req.body.userId, req.body.photo, req.body.itemName, req.body.itemType, req.body.comment)
+  postPost: ({body, body: { userId, photo, itemName, itemType, comment }}, res, next) => {
+    if (!isEmpty(body)) {
+      Post.createPost(userId, photo, itemName, itemType, comment)
         .then(createdPost => {
           res.json(createdPost);
         })
@@ -44,9 +44,9 @@ export default {
   },
   
   // updates one specific post
-  postUpdate: (req, res, next) => {
-    if (!isEmpty(req.body) && req.params.postId) {
-      Post.updatePost(req.params.postId, req.body)
+  postUpdate: ({body, params: { postId }}, res, next) => {
+    if (!isEmpty(body) && postId) {
+      Post.updatePost(postId, body)
         .then(updatedPost => {
           res.json(updatedPost);
         })
@@ -59,9 +59,9 @@ export default {
   },
  
  // deletes one specific post
-  postDelete: (req, res, next) => {
-    if (req.params.postId) {
-      Post.deletePost(req.params.postId)
+  postDelete: ({params: { postId }}, res, next) => {
+    if (postId) {
+      Post.deletePost(postId)
         .then(deletedPost => {
           res.json(deletedPost);
         })

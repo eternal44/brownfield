@@ -4,8 +4,8 @@ import { isEmpty } from 'lodash';
 export default {
   // two separate get requests
   // first one: send user id and get back all info
-  userGetUserId: (req, res, next) => {
-    User.getUserInfoByUserId(req.params.userId)
+  userGetUserId: ({params: { userId }}, res, next) => {
+    User.getUserInfoByUserId(userId)
       .then(data => {
         res.json(data);
       })
@@ -25,9 +25,9 @@ export default {
       });
   },
   
-  userPost: (req, res, next) => {
-    if (req.body.email && req.body.name) {
-      User.createUser(req.body.email, req.body.name)
+  userPost: ({body: { email, name }}, res, next) => {
+    if (email && name) {
+      User.createUser(email, name)
         .then(createdUser => {
           res.json(createdUser);
         })
@@ -39,10 +39,10 @@ export default {
      }
   },
   
-  userPut: (req, res, next) => {
+  userPut: ({params: { userId }, body }, res, next) => {
     // using lodash to see if the update object is empty
-    if (!isEmpty(req.body) && req.params.userId) {
-      User.updateUser(req.params.userId, req.body)
+    if (!isEmpty(body) && userId) {
+      User.updateUser(userId, body)
         .then(updatedUser => {
           res.json(updatedUser);
         })
@@ -54,9 +54,9 @@ export default {
     }
   },
   
-  userDelete: (req, res, next) => {
-    if (req.params.userId) {
-      User.deleteUser(req.params.userId)
+  userDelete: ({params: { userId }}, res, next) => {
+    if (userId) {
+      User.deleteUser(userId)
         .then(deletedUser => {
           res.json(deletedUser);
         })
