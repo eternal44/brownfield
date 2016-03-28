@@ -13,7 +13,7 @@ export default {
           return createdPost.rows[0];
         })
         .subscribe(createdPost => {
-          res.json(createdPost);
+          resolve(createdPost);
         },
         err => {
           reject(err);
@@ -62,7 +62,7 @@ export default {
         },
         err => {
           reject(err);
-        });
+        }); 
     });
   },
   // db query to get back all posts by a certain user
