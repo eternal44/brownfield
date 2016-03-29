@@ -15,7 +15,7 @@ export default {
   },
   
   // second one: no parameters and get back every single user. probably won't use this often.
-  userGetNoParams: (req, res, next) => {
+  userGetNoParams: ({}, res, next) => {
     User.getAllUsers()
       .then(allUserData => {
         res.json(allUserData);
