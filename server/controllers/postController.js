@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash';
 
 export default {
   // function that gets back all posts to populate dashboard
-  dashboardPostsGet: (req, res, next) => {
+  dashboardPostsGet: ({}, res, next) => {
     Post.getDashboardPosts()
       .then(dashPosts => {
         res.json(dashPosts);
