@@ -15,3 +15,16 @@ describe('GET /api/posts', () => {
       }, done());
   });
 });
+
+describe('GET /api/posts/:userId', () => {
+  it('should return all posts by a user', done => {
+    request 
+      .get('/api/posts/1')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        expect(res.body).to.be.an('array');
+        expect(res.body.length).to.be.at.least(1);
+      }, done());
+  });
+});
