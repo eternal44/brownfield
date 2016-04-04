@@ -7,11 +7,18 @@ import voteRouterConfig from '../routes/voteRoutes';
 import { errorHandler, logError } from './utils';
 import { urlencoded, json } from 'body-parser';
 import morgan from 'morgan';
+import { createClient } from 'redis';
 
 export default (app, express) => {
   let postRouter = express.Router();
   let userRouter = express.Router();
   let voteRouter = express.Router();
+  
+  let client = createClient();
+  
+  client.on('connect', function() {
+    console.log('connected');
+  });
 
   // logs incoming requests during development morgan
   app.use(morgan('dev'));
