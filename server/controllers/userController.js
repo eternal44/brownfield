@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash';
 export default {
   // two separate get requests
   // first one: send user id and get back all info
-  userGetUserId: ({params: { userId }}, res, next) => {
+  userGetUserId: ( {params: { userId } }, res, next) => {
     User.getUserInfoByUserId(userId)
       .then(data => {
         res.json(data);
@@ -25,7 +25,7 @@ export default {
       });
   },
   
-  userPost: ({body: { email, name }}, res, next) => {
+  userPost: ({body: { email, name } }, res, next) => {
     if (email && name) {
       User.createUser(email, name)
         .then(createdUser => {
