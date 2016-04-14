@@ -10,6 +10,11 @@ export const UPDATE_POST = 'UPDATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 // user action types
+export const FETCH_USER = 'FETCH_USER';
+export const FETCH_USERS = 'FETCH_USERS';
+export const CREATE_USER = 'CREATE_USER';
+export const UPDATE_USER = 'UPDATE_USER';
+export const DELETE_USER = 'DELETE_USER';
 
 // vote action types
 export const FETCH_POSTS_VOTES = 'FETCH_POSTS_VOTES';
@@ -70,6 +75,53 @@ export function deletePost(postId) {
   
   return {
     type: DELETE_POST,
+    payload: request
+  }
+}
+
+// user action functions
+
+export function fetchUser(userId) {
+  const request = axios.get(`/api/users/${userId}`);
+  
+  return {
+    type: FETCH_USER,
+    payload: request
+  }
+}
+
+export function fetchUsers() {
+  const request = axios.get(`/api/users`);
+  
+  return {
+    type: FETCH_USERS,
+    payload: request
+  }
+}
+
+export function createUser(props) {
+  const request = axios.post('/api/users', props);
+  
+  return {
+    type: CREATE_USER,
+    payload: request
+  }
+}
+
+export function updateUser(userId, props) {
+  const request = axios.put(`/api/users/${userId}`, props);
+  
+  return {
+    type: UPDATE_USER,
+    payload: request
+  }
+}
+
+export function deleteUser(userId) {
+  const request = axios.delete(`/api/users/${userId}`);
+  
+  return {
+    type: DELETE_USER,
     payload: request
   }
 }
