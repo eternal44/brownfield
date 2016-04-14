@@ -1,44 +1,43 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectPost } from '../actions/index';
-import { bindActionCreators } from 'redux';
+import { fetchPosts } from '../actions/index';
+import { Link } from 'react-router';
 
-class PostList extends Component {
-
-  renderList() {
-    // console.log(this.props, 'logging this props');
+class PostsIndex extends Component {
+  componentWillMount() {
+    this.props.fetchPosts();
+  }
+  
+  renderPosts() {
     return this.props.posts.map(post => {
       return (
-          <li key={post.title} 
-          onClick={() => this.props.selectPost(post)}
-          className="list-group-item">
-          {post.title}
-          </li>
-        );
+        <li className="list-group-item" key={post.id}>
+          <Link to={`posts/${post.id}`}>
+            <span className="pull-xs-right">{post.item_name}</span>
+            <strong>{post.item_type}</strong>
+          </Link>  
+        </li>
+      );
     });
   }
-
+  
   render() {
-    return (
-      <ul className="list-group col-sm-4">
-        {this.renderList()}
+    <div>
+      <div className="text-xs-right">
+        <Link to="/posts/new" className="btn btn-primary">
+          Add a post
+        </Link>
+      </div>
+      
+      <ul className="list-group">
+        {this.renderPosts()}
       </ul>
-      )
+    </div>
   }
 }
 
 function mapStateToProps(state) {
-  return {
-    posts: state.posts
-  };
+  return { posts: state.posts.all };
 }
 
-// anything returned from this function will end up as props on the post list container
-function mapDispatchToProps(dispatch) {
-  // whenever select post is called result should be passed to all of our reducers
-  return bindActionCreators({ selectPost }, dispatch);
-}
-
-// promote post list from a component to a container when using connect. dispatch method => make it available as a prop.
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default connect(mapStateToProps, { fetchPosts })(PostsIndex);

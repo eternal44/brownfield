@@ -1,14 +1,12 @@
-export default function() {
-  return [
-    {picture: '', title: 'necklace', user: 'poop'},
-    {picture: '', title: 'qwe', user: 'poop'},
-    {picture: '', title: 'gggg', user: 'poop'},
-    {picture: '', title: 'poop', user: 'poop'}
-  ];
+import { FETCH_POSTS, FETCH_USER_POSTS, CREATE_POST, UPDATE_POST, DELETE_POST } from '../actions/index';
+
+const INITIAL_STATE = { all: [] };
+
+export default function(state = INITIAL_STATE, action) {
+  switch(action.type) {
+    case FETCH_POSTS:
+      return { ...state, all: action.payload.data };
+      
+    case FETCH_USER_POSTS
+  }
 }
-
-// export default function (state = null, action) {
-//   return state;
-// }
-
-
