@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/gettruetheday/brownfield#readme",
   "dependencies": {
+    "axios": "^0.9.1",
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.2",
     "babel-eslint": "^5.0.0",
@@ -56,6 +57,7 @@
     "react-hot-loader": "^1.3.0",
     "react-redux": "^4.4.1",
     "react-relay": "^0.7.3",
+    "react-router": "^2.2.2",
     "reactfire": "^0.6.0",
     "redis": "^2.6.0-1",
     "redux": "^3.3.1",
