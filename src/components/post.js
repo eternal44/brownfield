@@ -1,5 +1,4 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 export default class Post extends Component {
 
@@ -7,6 +6,6 @@ export default class Post extends Component {
     return (
       <div>
       </div>
-      )
+      );
   }
 }
