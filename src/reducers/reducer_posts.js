@@ -5,8 +5,9 @@ const INITIAL_STATE = { all: [] };
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case FETCH_POSTS:
-      return { ...state, all: action.payload.data };
-      
-    case FETCH_USER_POSTS
+      return { all: action.payload.data };
+    
+    default:
+      return state;
   }
 }
