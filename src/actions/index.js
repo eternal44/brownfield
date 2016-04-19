@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// dev setup for react dev server
+const API_URI = window.location.origin === 'http://localhost:4001' ? 'http://localhost:4000' : '';
+
 // export const POST_SELECTED = 'POST_SELECTED';
 
 // post action types
@@ -35,7 +38,8 @@ export const DELETE_VOTE = 'DELETE_VOTE';
 // user action functions
 
 export function fetchPosts() {
-  const request = axios.get(`/api/posts`);
+  console.log(window.location.origin)
+  const request = axios.get(`${API_URI}/api/posts`);
   
   return {
     type: FETCH_POSTS,
@@ -44,7 +48,7 @@ export function fetchPosts() {
 }
 
 export function createPost(props) {
-  const request = axios.post(`/api/posts`, props);
+  const request = axios.post(`${API_URI}/api/posts`, props);
   
   return {
     type: CREATE_POST,
@@ -53,7 +57,7 @@ export function createPost(props) {
 }
 
 export function fetchUserPosts(userId) {
-  const request = axios.get(`/api/posts/${userId}`);
+  const request = axios.get(`${API_URI}/api/posts/${userId}`);
   
   return {
     type: FETCH_USER_POSTS,
@@ -62,7 +66,7 @@ export function fetchUserPosts(userId) {
 }
 
 export function updatePost(postId, props) {
-  const request = axios.put(`/api/posts/${postId}`, props);
+  const request = axios.put(`${API_URI}/api/posts/${postId}`, props);
   
   return {
     type: UPDATE_POST,
@@ -71,7 +75,7 @@ export function updatePost(postId, props) {
 }
 
 export function deletePost(postId) {
-  const request = axios.delete(`/api/posts/${postId}`);
+  const request = axios.delete(`${API_URI}/api/posts/${postId}`);
   
   return {
     type: DELETE_POST,
@@ -82,7 +86,7 @@ export function deletePost(postId) {
 // user action functions
 
 export function fetchUser(userId) {
-  const request = axios.get(`/api/users/${userId}`);
+  const request = axios.get(`${API_URI}/api/users/${userId}`);
   
   return {
     type: FETCH_USER,
@@ -91,7 +95,7 @@ export function fetchUser(userId) {
 }
 
 export function fetchUsers() {
-  const request = axios.get(`/api/users`);
+  const request = axios.get(`${API_URI}/api/users`);
   
   return {
     type: FETCH_USERS,
@@ -100,7 +104,7 @@ export function fetchUsers() {
 }
 
 export function createUser(props) {
-  const request = axios.post('/api/users', props);
+  const request = axios.post(`${API_URI}/api/users`, props);
   
   return {
     type: CREATE_USER,
@@ -109,7 +113,7 @@ export function createUser(props) {
 }
 
 export function updateUser(userId, props) {
-  const request = axios.put(`/api/users/${userId}`, props);
+  const request = axios.put(`${API_URI}/api/users/${userId}`, props);
   
   return {
     type: UPDATE_USER,
@@ -118,7 +122,7 @@ export function updateUser(userId, props) {
 }
 
 export function deleteUser(userId) {
-  const request = axios.delete(`/api/users/${userId}`);
+  const request = axios.delete(`${API_URI}/api/users/${userId}`);
   
   return {
     type: DELETE_USER,
@@ -129,7 +133,7 @@ export function deleteUser(userId) {
 // vote action functions
 
 export function fetchPostsVotes(postId) {
-  const request = axios.get(`/api/votes/post/${postId}`);
+  const request = axios.get(`${API_URI}/api/votes/post/${postId}`);
   
   return {
     type: FETCH_POSTS_VOTES,
@@ -138,7 +142,7 @@ export function fetchPostsVotes(postId) {
 }
 
 export function fetchUsersVotes(userId) {
-  const request = axios.get(`/api/votes/user/${userId}`);
+  const request = axios.get(`${API_URI}/api/votes/user/${userId}`);
   
   return {
     type: FETCH_USERS_VOTES,
@@ -147,7 +151,7 @@ export function fetchUsersVotes(userId) {
 }
 
 export function createVote(props) {
-  const request = axios.post(`/api/votes`, props);
+  const request = axios.post(`${API_URI}/api/votes`, props);
   
   return {
     type: CREATE_VOTE,
@@ -156,7 +160,7 @@ export function createVote(props) {
 }
 
 export function updateVote(props) {
-  const request = axios.put(`/api/votes`, props);
+  const request = axios.put(`${API_URI}/api/votes`, props);
   
   return {
     type: UPDATE_VOTE,
@@ -165,7 +169,7 @@ export function updateVote(props) {
 }
 
 export function deleteVote(props) {
-  const request = axios.delete(`/api/votes`, props);
+  const request = axios.delete(`${API_URI}/api/votes`, props);
   
   return {
     type: DELETE_VOTE,

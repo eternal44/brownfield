@@ -6,7 +6,7 @@
   "scripts": {
     "test": "gulp unit",
     "build": "node_modules/.bin/webpack && babel --presets es2015 server --out-dir dserver",
-    "dev": "node_modules/.bin/webpack-dev-server --hot",
+    "dev": "node_modules/.bin/webpack-dev-server --hot --port 4001",
     "prestart": "npm run build",
     "start": "node dserver/server",
     "start:server": "nodemon server/server.js --exec babel-node --presets es2015",
@@ -35,6 +35,7 @@
     "bluebird": "^3.3.4",
     "body-parser": "^1.15.0",
     "compression": "^1.6.1",
+    "cors": "^2.7.1",
     "dotenv": "^2.0.0",
     "enzyme": "^2.2.0",
     "eslint": "^2.4.0",

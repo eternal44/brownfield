@@ -25,6 +25,10 @@ export default (app, express) => {
   app.use(urlencoded({
     extended: true
   }));
+  
+  if (process.env.NODE_ENV === 'development') {
+    app.use(require('cors')());
+  }
   app.use(json());
   // parses incoming request for json and url encoded
   // gzip compression middleware that decreases the size of the response body: increases speed
