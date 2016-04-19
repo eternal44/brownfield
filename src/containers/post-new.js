@@ -4,7 +4,9 @@ import { createPost } from '../actions';
 import { Link } from 'react-router';
 
 class PostsNew extends Component {
-  
+  static contextTypes = {
+    router: PropTypes.object
+  }
   
   onSubmit(props) {
     this.props.createPost(props)
