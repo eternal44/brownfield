@@ -18,36 +18,40 @@ class PostsNew extends Component {
   }
   
   render() {
-    const { fields: { name, type, comment }, handleSubmit } = this.props;
+    const { fields: { name, itemType, comment }, handleSubmit } = this.props;
     
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <h3>Create A New Post</h3>
+        <h4>Create A New Post</h4>
+
+        <div className={`row ${name.touched && name.invalid ? 'has-danger': ''}`}>
+          <div className="input-field col s12">
+            <input id="itemname" type="text" className="validate" {...name} />
+            <label for="itemname" className="active" data-error={name.touched ? name.error : ''}>Item Name</label>
+            <div className="text-help">{name.touched ? name.error : ''}</div>
+          </div>
+        </div>        
+
+        <div className={`row ${itemType.touched && itemType.invalid ? 'has-danger': ''}`}>
+          <div className="input-field col s12">
+            <input id="itemname" type="text" className="validate" {...itemType} />
+            <label for="itemname" className="active" data-error={itemType.touched ? itemType.error : ''}>Item Name</label>
+            <div className="text-help">{itemType.touched ? itemType.error : ''}</div>
+          </div>
+        </div>     
         
-        <div className={`form-group ${name.touched && name.invalid ? 'has-danger' : ''}`}>
-          <label>Item Name</label>
-          <input type="text" className="form-control" {...name} />
-          <div className="text-help">
-            {name.touched ? name.error: ''}
+        <div className={`row ${comment.touched && comment.invalid ? 'has-danger' : ''}`} >
+          <div className="input-field col s12">
+            <textarea id="comment" className="materialize-textarea" {...comment} />
+            <label for="comment" className="active">Comment</label>
+            <div className="text-help">
+              {comment.touched ? comment.error : ''}
+            </div>
           </div>
         </div>
         
-        <div className={`form-group ${type.touched && type.invalid ? 'has-danger' : ''}`}>
-          <label>Item Type</label>
-          <input type="text" className="form-control" {...type} />
-          <div className="text-help">
-            {type.touched ? type.error: ''}
-          </div>
-        </div>
-        
-        <div className={`form-group ${comment.touched && comment.invalid ? 'has-danger' : ''}`}>
-          <label>Comment</label>
-          <textarea className="form-control" {...comment} />
-          <div className="text-help">
-            {comment.touched ? comment.error: ''}
-          </div>
-          
-        </div>
+        <button type="submit" className="btn waves-effect waves-light">Submit</button>
+        <Link to="/" className="btn waves-effect waves-light red">Cancel</Link>
       </form>
     );
   }
@@ -59,11 +63,11 @@ function validate(values) {
   if (!values.name) {
     errors.name = 'enter an item name';
   } 
-  if (!values.type) {
-    errors.type = 'enter an item type';
+  if (!values.itemType) {
+    errors.itemType = 'enter an item type';
   }
   if (!values.comment) {
-    errors.type = 'enter a comment';
+    errors.comment = 'enter a comment';
   }
   
   return errors;
@@ -71,6 +75,6 @@ function validate(values) {
 
 export default reduxForm({
   form: 'PostsNewForm',
-  fields: ['name', 'type', 'comment'],
+  fields: ['name', 'itemType', 'comment'],
   validate
 }, null, { createPost })(PostsNew);
