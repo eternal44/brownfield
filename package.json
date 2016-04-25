@@ -6,11 +6,12 @@
   "scripts": {
     "test": "gulp unit",
     "build": "node_modules/.bin/webpack && babel --presets es2015 server --out-dir dserver",
+    "build:production": "node_modules/.bin/webpack -p && babel --presets es2015 server --out-dir dserver",
     "dev": "node_modules/.bin/webpack-dev-server --hot --port 4001",
-    "prestart": "npm run build",
+    "prestart": "npm run build:production",
     "start": "node dserver/server",
     "start:server": "nodemon server/server.js --exec babel-node --presets es2015",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build:production"
   },
   "repository": {
     "type": "git",

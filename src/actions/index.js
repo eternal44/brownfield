@@ -38,7 +38,6 @@ export const DELETE_VOTE = 'DELETE_VOTE';
 // user action functions
 
 export function fetchPosts() {
-  console.log(window.location.origin)
   const request = axios.get(`${API_URI}/api/posts`);
   
   return {
